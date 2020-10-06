@@ -71,24 +71,21 @@ a {
 
 <form action="konfirmasi.php" method="post">
   <div class="container">
-    <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
+
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Username" name="username" required>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <input type="text" placeholder=" Email" name="email" id="email" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <input type="password" placeholder=" Password" name="psw" id="psw" required>
 
     <label for="namadepan"><b>Nama Depan</b></label>
     <input type="text" placeholder="Nama Depan" name="namaDepan" required>
 
     <label for="namabelakang"><b>Nama Belakang</b></label>
     <input type="text" placeholder="Nama Belakang" name="namaBelakang" required>
-
-    <label for="username"><b>username</b></label>
-    <input type="text" placeholder="Username" name="username" required>
 
     <button type="submit" class="registerbtn" name="registerbtn">Register</button>
   </div>
