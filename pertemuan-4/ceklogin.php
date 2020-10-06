@@ -5,7 +5,7 @@ if (isset($_POST['tombolSubmit'])){
     $password = $_POST['password'];
 
     if($username == "anto" && $password == "123"){
-        echo "Sukses";
+        echo "Ini sesi anto";
     }
     else{
         echo "Username / Password salah";
