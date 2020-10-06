@@ -14,4 +14,8 @@ if (isset($_POST['tombolSubmit'])){
 else {
     echo "mohon maaf cek login tidak bisa diakses langsung";
 }
+
+if ($_SESSION["sessionUsername"]){
+    echo "ini session ".$_SESSION["sessionUsername"];
+}
 ?>
