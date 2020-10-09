@@ -1,21 +1,17 @@
 <?php
 
-if (isset($_POST['tombolSubmit'])){
+if (isset($_POST['tombolsubmit'])){
+    $namadpn = $_POST['namadpn'];
+    $namablk = $_POST['namablk'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $email = $_POST['email'];
 
-    if($username == "anto" && $password == "123"){
-        echo "Ini sesi anto";
-    }
-    else{
-        echo "Username / Password salah";
-    }
-}
-else {
-    echo "mohon maaf cek login tidak bisa diakses langsung";
+//Memanggil
+
+    echo $username;
+    echo "<br>" .$email;
+    echo "<br> ".$namadpn." ".$namablk;
 }
 
-if ($_SESSION["sessionUsername"]){
-    echo "ini session ".$_SESSION["sessionUsername"];
-}
+
 ?>
