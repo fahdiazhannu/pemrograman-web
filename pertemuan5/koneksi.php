@@ -8,6 +8,6 @@ $namaDB = "weblanjut";
 $conn = mysqli_connect($namaServer, $username, $password, $namaDB);
 //check koneksi
 if (!$conn) {
-    die("Koneksi Gagal");
+    die("Koneksi anda Gagal");
 }
 ?>
