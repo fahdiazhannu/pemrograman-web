@@ -21,88 +21,52 @@
         $sks = $_POST['sks']; 
 
          //buat koneksi
-         $strsql = "INSERT INTO matakuliah (kodemk, namamk, kategori, sks) 
-         VALUES ('$kodemk','$namamk','$kategori','$sks')";
-         
-         $runSQL = mysqli_query($conn,$strsql);        
+         $strSQL = "UPDATE matakuliah SET 
+         namamk='".$namamk."', 
+         kategori='".$kategori."',
+         sks=".$sks." WHERE kodemk='".$kodemk."'";
+        // echo $strSQL;
+       // die;
+         $runSQL = mysqli_query($conn,$strSQL);        
          if ($runSQL) {
              $status = 1; //sukses
          }  
          else {
              $status = 0; //tidak sukses;
-         }       
+         }      
+         header("refresh:3; url=listmatakuliah.php"); 
     }        
     else if (isset($_GET['kodemk'])) {
-        $_kodemk = $_GET['kodemk'];
-        $strSQL = "SELECT * FROM matakuliah WHERE kodemk='".$_kodemk."'";
+        $kodemk = $_GET['kodemk'];
+        $strSQL = "SELECT * FROM matakuliah WHERE kodemk='".$kodemk."'";
         $runStrSQL = mysqli_query($conn,$strSQL);
         $jmlRowData = mysqli_num_rows($runStrSQL);
         if ($jmlRowData > 0) {
             while ($row = mysqli_fetch_assoc($runStrSQL)) {
-                $_namamk = $row["namamk"];
-                $_kategori = $row["kategori"];
-                $_sks = $row["sks"];
+                $namamk = $row["namamk"];
+                $kategori = $row["kategori"];
+                $sks = $row["sks"];
             }
         }
     }  
-    else {
-        $jngiseng = "disabled";
-        $_namamk = "";
-        $_kategori = "";
-        $_sks = "";
-        $_kodemk = "";
+    else {       
+        $namamk = "";
+        $kategori = "";
+        $sks = "";
+        $kodemk = "";
     }  
+    $disableForm = isset($_GET['kodemk']) ? "enabled": "disabled";
     ?>
     <div class="container">
         <h2>Pendaftaran Mata Kuliah versi 2 (dg Modal)</h2>   
-    <!-- Ini Modal -->
-        <div class="modal" id="pesan">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- ini header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Konfirmasi Pendaftaran</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
 
-                    <!-- body -->
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6"><b>Kode Mata Kuliah</b></div>
-                                <div class="col-6"><span id="kdmk"></span></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6"><b>Mata Kuliah</b></div>
-                                <div class="col-6"><span id="nmmk"></span></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6"><b>Kategori</b></div>
-                                <div class="col-6"><span id="kat"></span></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6"><b>SKS</b></div>
-                                <div class="col-6"><span id="sksmk"></span> sks</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Edit</button>
-                        <button id="proses" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <!-- ini end modal -->
         <?php 
+        include "modalform.php";
             if ($status == 1) {
         ?>    
             <div class="alert alert-success alert-dismissible fade show">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                Data berhasil diinput ke dalam database.
+                Data berhasil diinput ke dalam database. Halaman ini akan kembali ke List Mahasiswa dalam 3 detik
             </div>
         <?php 
             }
@@ -116,18 +80,19 @@
             }
         
         ?>
-        <form id="myform" method="post" action="registrasi_mk2.php">
+        <form id="myform" method="post" action="edit_mk2.php">
             <div class="form-group">
                 <label>Kode Mata Kuliah</label>
-                <input id="kodemk" class="form-control" type="text" name="kodemk" value="<?php echo $_kodemk ?>">
+                <input id="kodemk" class="form-control" type="text" name="kodemk" value="<?php echo $kodemk ?>" readonly 
+                <?php echo $disableForm ?>>
             </div>
             <div class="form-group">
                 <label>Nama Mata Kuliah</label>
-                <input id="namamk" class="form-control" type="text" name="namamk" value="<?php echo $_namamk ?>">
+                <input id="namamk" class="form-control" type="text" name="namamk" value="<?php echo $namamk ?>" <?php echo $disableForm ?>>
             </div>
             <div class="form-group">
                 <label>Kategori Mata Kuliah</label>
-                <select id="kategori" name="kategori" class="form-control">
+                <select id="kategori" name="kategori" class="form-control" <?php echo $disableForm ?>>
                 <option value="pilih">Pilih</option>
                 <option value="MKMA">Mata Kuliah Major</option>
                 <option value="MKMI">Mata Kuliah Minor</option>
@@ -136,9 +101,9 @@
             </div>
             <div class="form-group">
                 <label>SKS</label>
-                <input id="sks" class="form-control" type="text" name="sks" value="<?php echo $_sks ?>">
+                <input id="sks" class="form-control" type="text" name="sks" value="<?php echo $sks ?>" <?php echo $disableForm ?>>
             </div>           
-                <input class="btn btn-primary" type="button" id="tombol" value="Simpan">   
+                <input class="btn btn-primary" type="button" id="tombol" value="Simpan" <?php echo $disableForm ?>>   
         </form>
         
     </div>

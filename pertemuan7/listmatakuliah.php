@@ -54,8 +54,8 @@
               <td><?php echo $row["kategori"] ?></td>
               <td><?php echo $row["sks"] ?></td>
               <td>
-                <a href="edit_mk2.php?kodemk=<?php echo $row["kodemk"] ?>" class="btn btn-info"><i class="fa fa-edit"></i>Edit</a>
-                <a href="hapus_mk2.php" class="btn btn-danger"><i class="fa fa-trash"></i>Hapus</a>
+                <a href="edit_mk2.php?kodemk=<?php echo $row["kodemk"] ?>" class="btn btn-info">Edit</a>
+                <a href="hapus_mk2.php" class="btn btn-danger">Hapus</a>
               </td>
             </tr>
     <?php 
