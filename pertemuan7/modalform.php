@@ -12,20 +12,24 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
-                                <div class="col-6"><b>Kode Mata Kuliah</b></div>
-                                <div class="col-6"><span id="kdmk"></span></div>
+                                <div class="col-6"><b>Foto</b></div>
+                                <div class="col-6"><span id="foto"></span></div>
                             </div>
                             <div class="row">
-                                <div class="col-6"><b>Mata Kuliah</b></div>
-                                <div class="col-6"><span id="nmmk"></span></div>
+                                <div class="col-6"><b>Nama</b></div>
+                                <div class="col-6"><span id="nama"></span></div>
                             </div>
                             <div class="row">
-                                <div class="col-6"><b>Kategori</b></div>
-                                <div class="col-6"><span id="kat"></span></div>
+                                <div class="col-6"><b>Umur</b></div>
+                                <div class="col-6"><span id="umur"></span></div>
                             </div>
                             <div class="row">
-                                <div class="col-6"><b>SKS</b></div>
-                                <div class="col-6"><span id="sksmk"></span> sks</div>
+                                <div class="col-6"><b>Email</b></div>
+                                <div class="col-6"><span id="email"></span> sks</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6"><b>Deskripsi</b></div>
+                                <div class="col-6"><span id="deskripsi"></span> sks</div>
                             </div>
                         </div>
                     </div>
